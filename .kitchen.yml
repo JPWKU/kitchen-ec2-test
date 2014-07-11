@@ -1,0 +1,26 @@
+---
+driver:
+  name: ec2
+  aws_access_key_id: <access key> 
+  aws_secret_access_key: Thisisnotthesecretkeyyouarelookingfor 
+  aws_ssh_key_id: aws_key.pem
+  ssh_key: /path/to/your/aws_key
+  region: us-east-1
+  availability_zone: us-east-1b
+  require_chef_omnibus: true
+  iam_profile_name: dcm 
+
+driver_config:
+  require_chef_omnibus: true
+
+provisioner:
+  name: chef_solo
+
+platforms:
+  - name: ubuntu-12.04
+
+suites:
+  - name: default
+    run_list:
+      - recipe[git::default]
+    attributes:
